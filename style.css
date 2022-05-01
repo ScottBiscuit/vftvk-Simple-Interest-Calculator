@@ -6,18 +6,17 @@ body {
 
 h1{
     color:grey;
-    font:verdana;}
+    font-family:verdana;}
 
 .maindiv {
     background-color:white; 
     color: black; 
-    width: 300px;
+    width: 500px;
     padding:20px; 
     border-radius:25px; 
     }
+    
+.highlight {
+    background-color: yellow;
 
-#principal, #rate, #years {
-    text-justify: auto;
-    padding: auto;
- 
 }

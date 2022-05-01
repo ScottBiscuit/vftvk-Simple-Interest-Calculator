@@ -1,24 +1,31 @@
 function compute()
 {
-    var p = document.getElementById("principal").value;
-    if (p<=0) {
+    // create variables used in the formula
+    var principal = document.getElementById("principal").value;
+
+    // add validation for "Principal" input box - must be great than zero
+    if (principal<=0) {
         alert("Enter a positive Amount");
         return document.getElementById("principal").focus();
     }
+    
+    var rate = document.getElementById("rate").value;
+    var years = document.getElementById("years").value;
+    
+    // formula to generate the interest earned
+    var interest = principal * years * rate / 100; 
 
-    var y = document.getElementById("years").value;
-    var r = document.getElementById("rate").value;
+    // change "number of years" into actual year that rate would end
+    var year = new Date().getFullYear()+parseInt(years);
 
-    var i = p * y * r / 100; 
-
-    var x= new Date().getFullYear();
-    var year_future = x + parseInt(y);
-
-    document.getElementById("result").innerHTML=`If you deposit <b>${p}</b>, <br> at an interest rate of <b>${r}%.</b> <br> You will receive an amount of <b>${i}</b>, <br> in the year <b>${year_future}</b><br>`;
+    document.getElementById("result").innerHTML="If you deposit "+principal+",\<br\>at an interest rate of "+rate+"%\<br\>You will receive an amount of "+interest+",\<br\>in the year "+year+"\<br\> \<br\>"
     document.getElementById("principal").focus();
 }
 
-function read_rate() {
-    var p_rate = document.getElementById("rate").value;
-    document.getElementById("rate_val").innerHTML=p_rate + "%";
+// function that reads the value of the range slider and displays it the <span>adjacent to the slider.
+function updateRate() 
+{
+    var rateval = document.getElementById("rate").value;
+    document.getElementById("rate_val").innerText=rateval;
 }
+
